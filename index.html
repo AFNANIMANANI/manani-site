@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manani Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f7f4;
+    color: #2f3e2f;
+}
+
+/* ===== NAVBAR ===== */
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 8%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2f5d3f;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #2f3e2f;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #f0f5f0;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background: #3a7d44;
+    color: white;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1500&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 1.5rem;
+}
+
+.hero button {
+    padding: 12px 28px;
+    border: none;
+    background: #3a7d44;
+    color: white;
+    font-size: 1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.hero button:hover {
+    background: #2f5d3f;
+}
+
+/* ===== PRODUCTS ===== */
+.section {
+    padding: 4rem 8%;
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #2f5d3f;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 1rem 0 0.5rem;
+}
+
+.product-card p {
+    padding-bottom: 1rem;
+    font-weight: 600;
+    color: #3a7d44;
+}
+
+/* Buy button */
+.buy-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #3a7d44;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #2f5d3f;
+}
+
+/* ===== MISSION ===== */
+.mission {
+    background: #e6f0e6;
+    border-radius: 20px;
+    padding: 3rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #2f3e2f;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="navbar">
+<div class="logo">Manani Inc</div>
+<nav>
+<ul>
+<li><a href="sustainability.html">Sustainability</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="label.html">Label</a></li>
+<li><a href="shop.html">Shop</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<h1>Wear the Change 🌿</h1>
+<p>Timeless, sustainable fashion made from organic and recycled materials. Style that feels good — inside and out.</p>
+
+<a href="shop.html">
+<button>Shop Collection</button>
+</a>
+</div>
+</section>
+
+<section class="section">
+<h2>Featured Collection</h2>
+<div class="products" id="products"></div>
+</section>
+
+<section class="section">
+<div class="mission">
+<h2>Our Mission</h2>
+<p>At Manani Inc, we believe fashion should never cost the Earth. Our clothing is crafted using low-impact dyes, organic fabrics, and ethical labor practices to create a better future for our planet.</p>
+</div>
+</section>
+
+<footer>
+© 2026 Manani Inc. | Sustainable Fashion for a Better Tomorrow
+</footer>
+
+<script>
+// Load products and show 3 random products
+function loadProducts(){
+    let container = document.getElementById("products");
+    container.innerHTML = "";
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    if(products.length === 0){
+        container.innerHTML = "<p>No products yet. Go to Dashboard to add items.</p>";
+        return;
+    }
+    // shuffle products
+    products.sort(() => Math.random() - 0.5);
+    let featured = products.slice(0,3);
+    featured.forEach(product=>{
+        let card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+            <img src="${product.image}">
+            <h3>${product.title}</h3>
+            <p>$${product.price}</p>
+            <button class="buy-btn">Buy Now</button>
+        `;
+        card.onclick = () => {
+            localStorage.setItem("currentProduct", JSON.stringify(product));
+            window.location.href = "product.html";
+        };
+        container.appendChild(card);
+    });
+}
+
+// Initial load
+loadProducts();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manani Product</title>
+<style>
+body{font-family:Arial; background:#f4f7f4; margin:0; padding:0;}
+header{background:white; padding:20px; display:flex; justify-content:space-between; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+nav a{margin-left:20px; text-decoration:none; color:black;}
+.container{max-width:1000px;margin:30px auto;display:flex;gap:50px;flex-wrap:wrap;padding:0 2%;}
+.image-box{flex:1 1 400px;min-width:300px;background:white;border-radius:15px;padding:20px;box-shadow:0 8px 25px rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;}
+.image-box img{width:100%; max-height:450px; object-fit:cover; border-radius:12px;}
+.details{flex:1 1 400px;min-width:300px;display:flex;flex-direction:column;gap:20px;background:white;border-radius:15px;padding:25px;box-shadow:0 8px 25px rgba(0,0,0,0.08);}
+.details h1{font-size:30px;color:#2f5d3f;}
+.details .price{font-size:26px;font-weight:600;color:#3a7d44;}
+.details .description{font-size:16px;line-height:1.6;color:#555;}
+.details .highlights{font-size:15px;color:#2f3e2f;background:#e6f0e6;padding:15px;border-radius:12px;}
+.buttons{display:flex;gap:15px;flex-wrap:wrap;}
+button.buy-btn{flex:1 1 150px;padding:15px;font-size:18px;font-weight:600;color:white;background:#3a7d44;border:none;border-radius:30px;cursor:pointer;}
+button.buy-btn:hover{background:#2f5d3f;}
+button.back-btn{flex:1 1 150px;padding:15px;font-size:16px;font-weight:500;color:#3a7d44;background:white;border:2px solid #3a7d44;border-radius:30px;cursor:pointer;}
+button.back-btn:hover{background:#e6f0e6;}
+.bottom-bar{position:fixed;bottom:0;width:100%;background:#3a7d44;color:white;text-align:center;padding:15px 0;font-size:1rem;font-weight:500;}
+@media(max-width:900px){.container{flex-direction:column;gap:30px;padding:0 5%;}.buttons{flex-direction:column;} nav ul{flex-direction:column;gap:1rem;}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="navbar">
+<div class="logo">Manani Inc</div>
+<nav>
+<a href="#">Sustainability</a>
+<a href="#">About</a>
+<a href="#">Label</a>
+<a href="#">Contact</a>
+</nav>
+</div>
+</header>
+
+<div class="container">
+    <div class="image-box">
+        <img id="productImage" src="" alt="Product">
+    </div>
+    <div class="details">
+        <h1 id="productTitle"></h1>
+        <div class="price" id="productPrice"></div>
+        <div class="description" id="productDescription"></div>
+        <div class="highlights" id="productHighlights"></div>
+        <div class="buttons">
+            <button class="buy-btn">Buy Now</button>
+            <button class="back-btn" onclick="window.history.back()">← Back to Shop</button>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-bar">🌿 Sustainable Fashion for a Better Tomorrow</div>
+
+<script>
+const params=new URLSearchParams(window.location.search);
+const id=params.get('id');
+const products=JSON.parse(localStorage.getItem('products'))||[];
+const product=products[id];
+if(product){
+    document.getElementById('productImage').src=product.image;
+    document.getElementById('productTitle').innerText=product.title;
+    document.getElementById('productPrice').innerText='$'+product.price;
+    document.getElementById('productDescription').innerText=product.description;
+    if(Array.isArray(product.highlights)){
+        document.getElementById('productHighlights').innerText=product.highlights.join(' • ');
+    }else{
+        document.getElementById('productHighlights').innerText=product.highlights||'';
+    }
+}else{
+    document.body.innerHTML="<h2 style='text-align:center;margin-top:50px;'>Product not found</h2>";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manani Dashboard</title>
+<style>
+body{font-family:Arial; background:#f4f7f4; margin:0; padding:40px;}
+h1{color:#2f5d3f;}
+form{background:white; padding:20px; border-radius:10px; max-width:500px; margin-bottom:30px;}
+input,textarea{width:100%; padding:10px; margin:8px 0;}
+button{padding:10px; background:#3a7d44; color:white; border:none; cursor:pointer; border-radius:8px;}
+.products{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;}
+.card{background:white; padding:15px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center;}
+.card img{width:100%; height:180px; object-fit:cover; border-radius:8px;}
+.delete{background:red; margin-top:10px; display:block; width:100%;}
+</style>
+</head>
+<body>
+
+<h1>Manani Product Dashboard</h1>
+
+<form id="productForm">
+<input id="title" placeholder="Product Title" required>
+<textarea id="description" placeholder="Description"></textarea>
+<input id="price" placeholder="Price">
+<input id="highlights" placeholder="Highlights (comma separated)">
+<input type="file" id="image" accept="image/*" required>
+<button type="submit">Add Product</button>
+</form>
+
+<h2>Your Products</h2>
+<div class="products" id="productList"></div>
+
+<script>
+// Load products
+function loadProducts() {
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let list = document.getElementById("productList");
+    list.innerHTML = "";
+    products.forEach((product,index)=>{
+        let card=document.createElement("div");
+        card.className="card";
+        card.innerHTML=`
+            <img src="${product.image}">
+            <h3>${product.title}</h3>
+            <p>$${product.price}</p>
+            <p>${product.highlights ? product.highlights.join(' • ') : ''}</p>
+            <button class="delete" onclick="deleteProduct(${index})">Delete</button>
+            <button onclick="editProduct(${index})" style="margin-top:5px;">Edit</button>
+        `;
+        list.appendChild(card);
+    });
+}
+
+// Add or edit product
+document.getElementById("productForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let title=document.getElementById("title").value;
+    let description=document.getElementById("description").value;
+    let price=document.getElementById("price").value;
+    let highlights=document.getElementById("highlights").value.split(',').map(h=>h.trim()).filter(Boolean);
+    let file=document.getElementById("image").files[0];
+
+    if(!file){ alert("Please upload an image"); return; }
+
+    let reader=new FileReader();
+    reader.onload=function(){
+        let product={ title, description, price, highlights, image: reader.result };
+        let products=JSON.parse(localStorage.getItem("products")) || [];
+        if(window.editIndex!=null){ products[window.editIndex]=product; window.editIndex=null; }
+        else{ products.push(product); }
+        localStorage.setItem("products",JSON.stringify(products));
+        loadProducts();
+        document.getElementById("productForm").reset();
+    }
+    reader.readAsDataURL(file);
+});
+
+// Delete product
+function deleteProduct(index){
+    let products=JSON.parse(localStorage.getItem("products"))||[];
+    products.splice(index,1);
+    localStorage.setItem("products",JSON.stringify(products));
+    loadProducts();
+}
+
+// Edit product
+function editProduct(index){
+    let products=JSON.parse(localStorage.getItem("products"))||[];
+    let product=products[index];
+    document.getElementById("title").value=product.title;
+    document.getElementById("description").value=product.description;
+    document.getElementById("price").value=product.price;
+    document.getElementById("highlights").value=product.highlights.join(',');
+    window.editIndex=index;
+}
+
+// Initial load
+loadProducts();
+</script>
+
+</body>
+</html>
