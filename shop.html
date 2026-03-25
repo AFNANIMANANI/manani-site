@@ -112,22 +112,10 @@ nav a:hover { color: #3a7d44; }
 
 /* OVERLAY DESCRIPTION */
 .card .overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgba(255,255,255,0.95);
-    width: 100%;
     padding: 15px;
-    box-sizing: border-box;
-    text-align: left;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: 0.3s ease;
     font-size: 0.9rem;
     color: #2f3e2f;
-}
-.card:hover .overlay {
-    opacity: 1;
-    transform: translateY(0);
+    text-align: left;
 }
 
 /* BOTTOM BAR */
@@ -153,11 +141,9 @@ nav a:hover { color: #3a7d44; }
 
 <header>
 <h2>Manani Inc</h2>
-    <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">Manani Inc</a>
 <nav>
 <a href="index.html">Home</a>
 <a href="shop.html">Shop</a>
-<a href="dashboard.html">Dashboard</a>
 </nav>
 </header>
 
@@ -166,45 +152,79 @@ nav a:hover { color: #3a7d44; }
 <p>Stylish, sustainable pieces designed for conscious living.</p>
 </section>
 
-<div class="products" id="products"></div>
+<div class="products">
+
+<!-- Standard T-shirt -->
+<div class="card">
+<img src="tshirt.jpg" alt="Standard T-shirt">
+<h3>Standard T-shirt</h3>
+<p>$50</p>
+<div class="overlay">
+Soft, breathable 99% cotton T-shirt crafted in China. Lightweight comfort with tough stitching. Perfect for everyday wear.
+</div>
+<button>Buy Now</button>
+</div>
+
+<!-- Long Sleeved Shirt -->
+<div class="card">
+<img src="longshirt.jpg" alt="Long Sleeved Shirt">
+<h3>Long Sleeved Shirt</h3>
+<p>$55</p>
+<div class="overlay">
+Comfy, breathable 99% cotton long-sleeved shirt from China. Ideal for layering or standalone wear.
+</div>
+<button>Buy Now</button>
+</div>
+
+<!-- Standard Shorts -->
+<div class="card">
+<img src="shorts.jpg" alt="Standard Shorts">
+<h3>Standard Shorts</h3>
+<p>$45</p>
+<div class="overlay">
+Made with 99% cotton in China. Perfect for hot weather, lightweight and comfortable.
+</div>
+<button>Buy Now</button>
+</div>
+
+<!-- Normal Branded Hoodie -->
+<div class="card">
+<img src="hoodie.jpg" alt="Normal Branded Hoodie">
+<h3>Normal Branded Hoodie</h3>
+<p>$65</p>
+<div class="overlay">
+Made in China, 98% cotton. Comfortable, warm, and designed for colder environments.
+</div>
+<button>Buy Now</button>
+</div>
+
+<!-- Standard Pants -->
+<div class="card">
+<img src="pants.jpg" alt="Standard Pants">
+<h3>Standard Pants</h3>
+<p>$50</p>
+<div class="overlay">
+Made from 100% cotton for softness and comfort. Stretchable and perfect for daily wear.
+</div>
+<button>Buy Now</button>
+</div>
+
+<!-- Long Skirt -->
+<div class="card">
+<img src="skirt.jpg" alt="Long Skirt">
+<h3>Long Skirt</h3>
+<p>$55</p>
+<div class="overlay">
+Stylish, simple 100% cotton skirt made in China. Minimalistic yet elegant.
+</div>
+<button>Buy Now</button>
+</div>
+
+</div>
 
 <div class="bottom-bar">
 © 2026 Manani Inc. | Sustainable Fashion for a Better Tomorrow
 </div>
-
-<script>
-function loadProducts() {
-    const container = document.getElementById("products");
-    container.innerHTML = "";
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    if(products.length === 0){
-        container.innerHTML = "<p style='padding:20px; text-align:center;'>No products yet. Go to Dashboard to add items.</p>";
-        return;
-    }
-    products.forEach((product, index)=>{
-        const card = document.createElement("div");
-        card.className = "card";
-        card.innerHTML = `
-            <img src="${product.image}" alt="${product.title}">
-            <h3>${product.title}</h3>
-            <p>$${product.price}</p>
-            <button>Buy Now</button>
-            <div class="overlay">
-                <strong>Description:</strong> ${product.description || 'No description'}<br>
-                <strong>Materials:</strong> ${product.materials || 'N/A'}
-            </div>
-        `;
-        const btn = card.querySelector('button');
-        btn.addEventListener('click', e=>{
-            e.stopPropagation();
-            window.location = 'product.html?id=' + index;
-        });
-        card.addEventListener('click', ()=>window.location = 'product.html?id=' + index);
-        container.appendChild(card);
-    });
-}
-loadProducts();
-</script>
 
 </body>
 </html>
