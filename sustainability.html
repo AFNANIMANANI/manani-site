@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Manani Sustainability</title>
+<title>Sustainability | Manani Inc.</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 * {
@@ -16,6 +16,8 @@
 body {
     background-color: #f4f7f4;
     color: #2f3e2f;
+    line-height: 1.6;
+    padding-bottom: 3rem;
 }
 
 /* ===== NAVBAR ===== */
@@ -64,48 +66,57 @@ nav ul li a:hover {
 
 /* ===== SECTION ===== */
 .section {
-    padding: 4rem 8%;
-}
-
-.section h1 {
-    color: #2f5d3f;
-    margin-bottom: 1.5rem;
-    font-size: 2.5rem;
+    padding: 3rem 8%;
+    max-width: 1000px;
+    margin: auto;
 }
 
 .section h2 {
     color: #2f5d3f;
-    margin-top: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 1rem;
-    font-size: 1.8rem;
+}
+
+.section h3 {
+    color: #3a7d44;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .section p {
-    line-height: 1.6;
     margin-bottom: 1rem;
-    font-size: 1rem;
 }
 
+/* Tables */
 .section table {
     width: 100%;
     border-collapse: collapse;
     margin: 1rem 0 2rem 0;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
 }
 
 .section th, .section td {
     padding: 12px 15px;
-    border: 1px solid #ccc;
     text-align: left;
 }
 
 .section th {
     background-color: #e6f0e6;
     color: #2f5d3f;
+    font-weight: 600;
+}
+
+.section tr:nth-child(even) {
+    background-color: #f7f9f7;
 }
 
 /* ===== FOOTER ===== */
 footer {
-    background: #3a7d44;
+    background: #2f3e2f;
     color: white;
     text-align: center;
     padding: 1.5rem;
@@ -123,6 +134,10 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
+    .section {
+        padding: 2rem 4%;
+    }
 }
 </style>
 </head>
@@ -130,25 +145,24 @@ footer {
 
 <header>
 <div class="navbar">
-<div class="logo">Manani Inc</div>
     <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">Manani Inc</a>
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="sustainability.html">Sustainability</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="label.html">Label</a></li>
-<li><a href="shop.html">Shop</a></li>
-</ul>
-</nav>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sustainability.html">Sustainability</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="label.html">Label</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+    </nav>
 </div>
 </header>
 
 <section class="section">
-<h1>What is Sustainability?</h1>
-<p>Sustainability means looking after the environment so it is protected for the future. This includes animals, plants, the atmosphere, and more. We do not use unsustainable materials like nylon, polyester, or acrylic. We avoid fossil fuel-derived materials and instead use sustainable materials like organic cotton, linen, and hemp. These materials come from plants and can grow again, making them sustainable. We encourage avoiding clothing from unsustainable or fast fashion companies, as purchasing from them worsens pollution.</p>
+<h2>What is Sustainability?</h2>
+<p>Sustainability means looking after the environment so it is protected for the future. This includes animals, plants, the atmosphere, and more. We do not use unsustainable materials like nylon, polyester, or acrylic. Instead, we use sustainable materials such as organic cotton, linen, and hemp, which are plant-based and renewable. We encourage avoiding fast fashion companies, as their practices worsen pollution and waste.</p>
 
-<h2>Sustainable and Unsustainable Materials</h2>
+<h3>Sustainable vs Unsustainable Materials</h3>
 <table>
 <tr>
 <th>Sustainable</th>
@@ -168,12 +182,11 @@ footer {
 </tr>
 </table>
 
-<h1>What is Fast Fashion?</h1>
-<p>Fast fashion is a monetization strategy that companies like Temu or Shein use to produce large amounts of clothing in bulk. They often use cheap, unsustainable materials and exploit cheap labor in countries like Bangladesh or India. These practices are inhumane and unsustainable, creating mass amounts of clothing, not all of which is purchased. Unsold items often go to landfills or are burned, releasing toxic chemicals into the environment.</p>
+<h2>What is Fast Fashion?</h2>
+<p>Fast fashion is a strategy used by companies like Temu or Shein to mass-produce clothing cheaply. They often exploit cheap labor and use unsustainable materials. Unsold items frequently end up in landfills or are burned, releasing harmful chemicals into the environment.</p>
 
-<h1>How is Manani Inc Sustainable?</h1>
-<p>We use materials such as cotton, linen, hemp, and mushroom leather. These materials come from plants and are able to grow again, making them sustainable.</p>
-<p>We manufacture our clothing in China because of advanced technology and fair wages for workers. We do not overproduce; only a limited number of pieces are sold at a time (e.g., 30-50 pieces). Leftover clothing is upcycled into new pieces, reducing waste and supporting sustainability.</p>
+<h2>How is Manani Inc Sustainable?</h2>
+<p>We use materials such as cotton, linen, hemp, and mushroom leather, which are plant-based and renewable. We manufacture in China, using advanced technology and ensuring fair wages. We only produce limited quantities to reduce waste, and leftover clothing is upcycled into new products.</p>
 </section>
 
 <footer>
