@@ -6,60 +6,44 @@
 <title>Manani Shop</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-/* ===== BODY & FONT ===== */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f7f4;
     margin: 0;
+    padding: 0;
     color: #2f3e2f;
 }
-
-/* ===== NAVBAR ===== */
+/* HEADER */
 header {
     background: white;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    z-index: 1000;
-}
-.navbar {
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 8%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-.logo {
-    font-size: 1.5rem;
-    font-weight: 600;
+header h2 {
     color: #2f5d3f;
 }
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.8rem;
-}
-nav ul li a {
+nav a {
     text-decoration: none;
     color: #2f3e2f;
     font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background: #f0f5f0;
+    margin-left: 20px;
     transition: 0.3s;
 }
-nav ul li a:hover {
-    background: #3a7d44;
-    color: white;
-}
+nav a:hover { color: #3a7d44; }
 
-/* ===== SHOP HEADER ===== */
+/* SHOP HEADER */
 .shop-header {
     text-align: center;
     padding: 3rem 8%;
 }
 .shop-header h1 {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     color: #2f5d3f;
     margin-bottom: 0.5rem;
 }
@@ -68,85 +52,65 @@ nav ul li a:hover {
     font-size: 1.1rem;
 }
 
-/* ===== PRODUCT GRID ===== */
+/* GRID SECTION */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 35px;
     padding: 2rem 8%;
     justify-items: center;
 }
 
-/* ===== PRODUCT CARD ===== */
+/* PRODUCT CARD */
 .card {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 320px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+    text-align: center;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 .card img {
     width: 100%;
-    height: 300px;
+    height: 320px;
     object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
 }
-.card-content {
-    padding: 15px 20px;
-    text-align: center;
-}
-.card-content h3 {
-    margin: 10px 0 5px;
+.card h3 {
+    padding: 15px 0 5px;
     font-size: 1.2rem;
-    color: #2f5d3f;
 }
-.card-content p.price {
-    font-weight: 600;
+.card p {
     color: #3a7d44;
+    font-weight: 600;
+    font-size: 1.1rem;
     margin-bottom: 10px;
 }
-.card-content button {
-    padding: 8px 20px;
+.card button {
+    margin-bottom: 15px;
+    padding: 10px 28px;
     border: none;
     background: #3a7d44;
     color: white;
-    border-radius: 30px;
     font-weight: 600;
+    border-radius: 30px;
     cursor: pointer;
     transition: 0.3s;
 }
-.card-content button:hover {
-    background: #2f5d3f;
-}
+.card button:hover { background: #2f5d3f; }
 
-/* ===== OVERLAY DESCRIPTION ===== */
-.card .overlay {
-    position: absolute;
-    bottom: 0;
-    background: rgba(255,255,255,0.95);
-    width: 100%;
-    padding: 15px;
-    box-sizing: border-box;
-    text-align: left;
-    font-size: 0.9rem;
-    color: #2f3e2f;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: 0.3s ease;
-}
-.card:hover .overlay {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===== BOTTOM BAR ===== */
+/* BOTTOM BAR */
 .bottom-bar {
     background: #3a7d44;
     color: white;
@@ -156,10 +120,10 @@ nav ul li a:hover {
     margin-top: 2rem;
 }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media(max-width:768px){
-    .navbar { flex-direction: column; gap: 10px; }
-    nav ul { flex-direction: column; align-items: center; }
+    header { flex-direction: column; gap: 10px; }
+    nav a { margin-left: 0; }
     .products { padding: 2rem 5%; gap: 20px; }
     .shop-header { padding: 2rem 5%; }
 }
@@ -168,18 +132,14 @@ nav ul li a:hover {
 <body>
 
 <header>
-<div class="navbar">
-    <div class="logo">Manani Inc</div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sustainability.html">Sustainability</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="label.html">Label</a></li>
-            <li><a href="shop.html">Shop</a></li>
-        </ul>
-    </nav>
-</div>
+<h2>Manani Inc</h2>
+<nav>
+<a href="index.html">Home</a>
+<a href="sustainability.html">Sustainability</a>
+<a href="about.html">About</a>
+<a href="label.html">Label</a>
+<a href="shop.html">Shop</a>
+</nav>
 </header>
 
 <section class="shop-header">
@@ -187,91 +147,44 @@ nav ul li a:hover {
 <p>Stylish, sustainable pieces designed for conscious living.</p>
 </section>
 
-<div class="products">
-
-<!-- Standard T-shirt -->
-<div class="card">
-<img src="tshirt.jpg" alt="Standard T-shirt">
-<div class="card-content">
-<h3>Standard T-shirt</h3>
-<p class="price">$50</p>
-<button>Buy Now</button>
-</div>
-<div class="overlay">
-Soft, breathable 99% cotton T-shirt crafted in China. Lightweight comfort with tough stitching. Perfect for everyday wear.
-</div>
-</div>
-
-<!-- Long Sleeved Shirt -->
-<div class="card">
-<img src="longshirt.jpg" alt="Long Sleeved Shirt">
-<div class="card-content">
-<h3>Long Sleeved Shirt</h3>
-<p class="price">$55</p>
-<button>Buy Now</button>
-</div>
-<div class="overlay">
-Comfy, breathable 99% cotton long-sleeved shirt from China. Ideal for layering or standalone wear.
-</div>
-</div>
-
-<!-- Standard Shorts -->
-<div class="card">
-<img src="shorts.jpg" alt="Standard Shorts">
-<div class="card-content">
-<h3>Standard Shorts</h3>
-<p class="price">$45</p>
-<button>Buy Now</button>
-</div>
-<div class="overlay">
-Made with 99% cotton in China. Perfect for hot weather, lightweight and comfortable.
-</div>
-</div>
-
-<!-- Normal Branded Hoodie -->
-<div class="card">
-<img src="hoodie.jpg" alt="Normal Branded Hoodie">
-<div class="card-content">
-<h3>Normal Branded Hoodie</h3>
-<p class="price">$65</p>
-<button>Buy Now</button>
-</div>
-<div class="overlay">
-Made in China, 98% cotton. Comfortable, warm, and designed for colder environments.
-</div>
-</div>
-
-<!-- Standard Pants -->
-<div class="card">
-<img src="pants.jpg" alt="Standard Pants">
-<div class="card-content">
-<h3>Standard Pants</h3>
-<p class="price">$50</p>
-<button>Buy Now</button>
-</div>
-<div class="overlay">
-Made from 100% cotton for softness and comfort. Stretchable and perfect for daily wear.
-</div>
-</div>
-
-<!-- Long Skirt -->
-<div class="card">
-<img src="skirt.jpg" alt="Long Skirt">
-<div class="card-content">
-<h3>Long Skirt</h3>
-<p class="price">$55</p>
-<button>Buy Now</button>
-</div>
-<div class="overlay">
-Stylish, simple 100% cotton skirt made in China. Minimalistic yet elegant.
-</div>
-</div>
-
-</div>
+<div class="products" id="products"></div>
 
 <div class="bottom-bar">
 © 2026 Manani Inc. | Sustainable Fashion for a Better Tomorrow
 </div>
+
+<script>
+// Hardcoded products
+const hardcodedProducts = [
+  { title: "Standard T-shirt", price: 50, description: "Soft, breathable 99% cotton T-shirt crafted in China. Lightweight comfort and tough stitching.", highlights: ["99% cotton","Made in China"], image: "tshirt.jpg" },
+  { title: "Long sleeved shirt", price: 55, description: "Comfy, breathable 99% cotton, Chinese made long sleeved shirt.", highlights: ["99% cotton","Made in China"], image: "longshirt.jpg" },
+  { title: "Standard shorts", price: 45, description: "Made with 99% cotton in Chinese factories. Perfect for hot weather.", highlights: ["99% cotton","Made in China"], image: "shorts.jpg" },
+  { title: "Normal branded hoodie", price: 65, description: "Made of 98% cotton, keeps you warm and comfortable. Made in China.", highlights: ["98% cotton","Made in China"], image: "hoodie.jpg" },
+  { title: "Standard pants", price: 50, description: "Designed for comfort, made of 100% cotton, soft and flexible.", highlights: ["100% cotton","Comfortable"], image: "pants.jpg" },
+  { title: "Long skirt", price: 55, description: "Simple and stylish, made of 100% cotton in Chinese factories.", highlights: ["100% cotton","Simple design"], image: "skirt.jpg" }
+];
+
+// Combine with localStorage
+const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+const allProducts = [...hardcodedProducts, ...storedProducts];
+
+// Display products
+const container = document.getElementById("products");
+allProducts.forEach((product, index) => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.title}">
+        <h3>${product.title}</h3>
+        <p>$${product.price}</p>
+        <button>View</button>
+    `;
+    card.querySelector("button").addEventListener("click", () => {
+        window.location.href = `product.html?id=${index}`;
+    });
+    container.appendChild(card);
+});
+</script>
 
 </body>
 </html>
