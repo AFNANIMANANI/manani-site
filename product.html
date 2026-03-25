@@ -31,10 +31,11 @@ button.back-btn:hover{background:#e6f0e6;}
 <div class="navbar">
 <div class="logo">Manani Inc</div>
 <nav>
-<a href="#">Sustainability</a>
-<a href="#">About</a>
-<a href="#">Label</a>
-<a href="#">Contact</a>
+<a href="index.html">Home</a>
+<a href="sustainability.html">Sustainability</a>
+<a href="about.html">About</a>
+<a href="label.html">Label</a>
+<a href="shop.html">Shop</a>
 </nav>
 </div>
 </header>
@@ -58,22 +59,33 @@ button.back-btn:hover{background:#e6f0e6;}
 <div class="bottom-bar">🌿 Sustainable Fashion for a Better Tomorrow</div>
 
 <script>
-const params=new URLSearchParams(window.location.search);
-const id=params.get('id');
-const products=JSON.parse(localStorage.getItem('products'))||[];
-const product=products[id];
+// Hardcoded products
+const hardcodedProducts = [
+  { title: "Standard T-shirt", price: 50, description: "Soft, breathable 99% cotton T-shirt crafted in China. Lightweight comfort and tough stitching.", highlights: ["99% cotton","Made in China"], image: "tshirt.jpg" },
+  { title: "Long sleeved shirt", price: 55, description: "Comfy, breathable 99% cotton, Chinese made long sleeved shirt.", highlights: ["99% cotton","Made in China"], image: "longshirt.jpg" },
+  { title: "Standard shorts", price: 45, description: "Made with 99% cotton in Chinese factories. Perfect for hot weather.", highlights: ["99% cotton","Made in China"], image: "shorts.jpg" },
+  { title: "Normal branded hoodie", price: 65, description: "Made of 98% cotton, keeps you warm and comfortable. Made in China.", highlights: ["98% cotton","Made in China"], image: "hoodie.jpg" },
+  { title: "Standard pants", price: 50, description: "Designed for comfort, made of 100% cotton, soft and flexible.", highlights: ["100% cotton","Comfortable"], image: "pants.jpg" },
+  { title: "Long skirt", price: 55, description: "Simple and stylish, made of 100% cotton in Chinese factories.", highlights: ["100% cotton","Simple design"], image: "skirt.jpg" }
+];
+
+// Combine with localStorage products
+const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+const allProducts = [...hardcodedProducts, ...storedProducts];
+
+// Get product ID from URL
+const params = new URLSearchParams(window.location.search);
+const id = parseInt(params.get('id'));
+const product = allProducts[id];
+
 if(product){
-    document.getElementById('productImage').src=product.image;
-    document.getElementById('productTitle').innerText=product.title;
-    document.getElementById('productPrice').innerText='$'+product.price;
-    document.getElementById('productDescription').innerText=product.description;
-    if(Array.isArray(product.highlights)){
-        document.getElementById('productHighlights').innerText=product.highlights.join(' • ');
-    }else{
-        document.getElementById('productHighlights').innerText=product.highlights||'';
-    }
+    document.getElementById('productImage').src = product.image;
+    document.getElementById('productTitle').innerText = product.title;
+    document.getElementById('productPrice').innerText = '$' + product.price;
+    document.getElementById('productDescription').innerText = product.description;
+    document.getElementById('productHighlights').innerText = product.highlights.join(' • ');
 }else{
-    document.body.innerHTML="<h2 style='text-align:center;margin-top:50px;'>Product not found</h2>";
+    document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Product not found</h2>";
 }
 </script>
 
